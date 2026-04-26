@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Background and foreground */
+  --background: #fffdf7;
+  --foreground: #1a1a1a;
+
+  /* Senegal-inspired green palette (flag green, tropical foliage) */
+  --green-50: #f0faf0;
+  --green-100: #d4f0d4;
+  --green-200: #a8e0a8;
+  --green-300: #6cc96c;
+  --green-400: #3db53d;
+  --green-500: #00853f;
+  --green-600: #006d33;
+  --green-700: #005528;
+  --green-800: #003d1c;
+  --green-900: #002611;
+
+  /* Yellow-orange palette (mango flesh, Senegal sun) */
+  --yellow-50: #fff9eb;
+  --yellow-100: #ffefc2;
+  --yellow-200: #ffe099;
+  --yellow-300: #ffd066;
+  --yellow-400: #ffc233;
+  --yellow-500: #ffb400;
+  --yellow-600: #cc9000;
+  --yellow-700: #996c00;
+
+  /* Gold palette (Senegal flag star, ripe mango skin) */
+  --gold-50: #fdf8ef;
+  --gold-100: #f9ecd3;
+  --gold-200: #f2d9a7;
+  --gold-300: #e8c170;
+  --gold-400: #daa844;
+  --gold-500: #c8922a;
+  --gold-600: #a07422;
+  --gold-700: #78571a;
+}
+
+@layer base {
+  html {
+    overflow-x: hidden;
+  }
+
+  body {
+    color: var(--foreground);
+    background-color: var(--background);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--green-800);
+  }
+
+  a {
+    color: var(--green-600);
+    transition: color 0.1s ease;
+  }
+
+  a:hover {
+    color: var(--green-500);
+  }
+}
