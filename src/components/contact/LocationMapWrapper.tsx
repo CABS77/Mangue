@@ -11,8 +11,8 @@ interface LocationMapWrapperProps {
 const LocationMap = dynamic(() => import('./LocationMap'), {
   ssr: false,
   loading: () => (
-    <div className="flex h-80 items-center justify-center rounded-lg bg-senegal-green-50">
-      <p className="text-senegal-green-700">Chargement de la carte…</p>
+    <div className="flex h-80 items-center justify-center rounded-2xl bg-cream">
+      <p className="text-charcoal-light font-sans">Chargement de la carte…</p>
     </div>
   ),
 });

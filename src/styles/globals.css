@@ -1,68 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* Background and foreground */
-  --background: #fffdf7;
-  --foreground: #1a1a1a;
+  /* Premium color palette */
+  --forest-green: #1B4332;
+  --forest-green-light: #2D5A45;
+  --forest-green-dark: #122E22;
+  --gold: #D4A843;
+  --gold-light: #E4C06A;
+  --gold-dark: #B8903A;
+  --cream: #FFF8F0;
+  --cream-dark: #F5EDE0;
+  --mango-orange: #E8913A;
+  --mango-orange-light: #F0A85A;
+  --charcoal: #2D2D2D;
+  --charcoal-light: #4A4A4A;
+  --white: #FFFFFF;
 
-  /* Senegal-inspired green palette (flag green, tropical foliage) */
-  --green-50: #f0faf0;
-  --green-100: #d4f0d4;
-  --green-200: #a8e0a8;
-  --green-300: #6cc96c;
-  --green-400: #3db53d;
-  --green-500: #00853f;
-  --green-600: #006d33;
-  --green-700: #005528;
-  --green-800: #003d1c;
-  --green-900: #002611;
+  /* Legacy variables for compatibility */
+  --background: #FFF8F0;
+  --foreground: #2D2D2D;
 
-  /* Yellow-orange palette (mango flesh, Senegal sun) */
-  --yellow-50: #fff9eb;
+  --green-50: #f0f7f2;
+  --green-100: #d4ecd9;
+  --green-200: #a8d9b3;
+  --green-300: #6cc97e;
+  --green-400: #3db55a;
+  --green-500: #1B4332;
+  --green-600: #1B4332;
+  --green-700: #1B4332;
+  --green-800: #1B4332;
+  --green-900: #122E22;
+
+  --yellow-50: #FFF8F0;
   --yellow-100: #ffefc2;
   --yellow-200: #ffe099;
   --yellow-300: #ffd066;
   --yellow-400: #ffc233;
-  --yellow-500: #ffb400;
-  --yellow-600: #cc9000;
+  --yellow-500: #D4A843;
+  --yellow-600: #B8903A;
   --yellow-700: #996c00;
 
-  /* Gold palette (Senegal flag star, ripe mango skin) */
   --gold-50: #fdf8ef;
   --gold-100: #f9ecd3;
   --gold-200: #f2d9a7;
   --gold-300: #e8c170;
   --gold-400: #daa844;
-  --gold-500: #c8922a;
-  --gold-600: #a07422;
+  --gold-500: #D4A843;
+  --gold-600: #B8903A;
   --gold-700: #78571a;
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @layer base {
   html {
     overflow-x: hidden;
+    scroll-behavior: smooth;
   }
 
   body {
-    color: var(--foreground);
-    background-color: var(--background);
-    font-size: 16px;
-    line-height: 1.6;
+    color: var(--charcoal);
+    background-color: var(--cream);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    color: var(--green-800);
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    color: var(--forest-green);
+    line-height: 1.2;
   }
 
   a {
-    color: var(--green-600);
-    transition: color 0.1s ease;
+    color: var(--forest-green);
+    transition: color 0.3s ease;
   }
 
   a:hover {
-    color: var(--green-500);
+    color: var(--gold);
+  }
+
+  ::selection {
+    background-color: var(--gold);
+    color: var(--forest-green);
+  }
+
+  /* Refined scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--cream);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--gold-dark);
+  }
+}
+
+@layer components {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  /* Staggered animation delays */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; }
+
+  /* Premium card hover effect */
+  .card-hover {
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(27, 67, 50, 0.12), 0 8px 24px rgba(27, 67, 50, 0.08);
+  }
+
+  /* Image zoom on hover */
+  .img-zoom {
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .img-zoom:hover {
+    transform: scale(1.05);
+  }
+
+  /* Gold underline decoration */
+  .gold-underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .gold-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    border-radius: 2px;
+  }
+
+  /* Nav link hover underline */
+  .nav-link-underline {
+    position: relative;
+  }
+
+  .nav-link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--gold);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link-underline:hover::after,
+  .nav-link-underline.active::after {
+    width: 100%;
+  }
+
+  /* Button scale effect */
+  .btn-scale {
+    transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .btn-scale:hover {
+    transform: scale(1.03);
+  }
+
+  .btn-scale:active {
+    transform: scale(0.98);
+  }
+
+  /* Gradient text */
+  .text-gradient {
+    background: linear-gradient(135deg, var(--gold), var(--mango-orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Section divider */
+  .section-divider {
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--mango-orange));
+    margin: 0 auto;
+    border-radius: 1px;
   }
 }

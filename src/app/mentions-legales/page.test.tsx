@@ -29,7 +29,7 @@ describe('Legal page (Mentions Légales)', () => {
 
   it('renders the founder name', () => {
     render(<MentionsLegalesPage />);
-    expect(screen.getByText('Cheikh Ahmadou Bamba Sall')).toBeInTheDocument();
+    expect(screen.getByText('Cheikh Sall')).toBeInTheDocument();
   });
 
   it('renders the company address', () => {

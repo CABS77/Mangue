@@ -9,10 +9,10 @@ describe('SectionHeading', () => {
     expect(heading).toBeInTheDocument();
   });
 
-  it('uses Senegal green color for the heading', () => {
+  it('uses forest green color for the heading', () => {
     render(<SectionHeading>Titre</SectionHeading>);
     const heading = screen.getByRole('heading', { level: 2 });
-    expect(heading.className).toContain('text-senegal-green-800');
+    expect(heading.className).toContain('text-forest-green');
   });
 
   it('renders subtitle when provided', () => {

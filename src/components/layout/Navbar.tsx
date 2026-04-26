@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { companyInfo } from '@/data/company';
 
 const navLinks = [
@@ -45,6 +45,15 @@ function HamburgerIcon() {
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen((prev) => !prev);
@@ -55,17 +64,24 @@ export default function Navbar() {
   };
 
   return (
-    <nav aria-label="Navigation principale" className="bg-senegal-green-800 text-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+    <nav
+      aria-label="Navigation principale"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? 'bg-forest-green/95 backdrop-blur-md shadow-premium-lg'
+          : 'bg-forest-green'
+      }`}
+    >
+      <div className="mx-auto max-w-content px-6 lg:px-8">
+        <div className="flex h-20 items-center justify-between">
           {/* Logo and company name */}
           <Link
             href="/"
-            className="flex items-center gap-2 text-white no-underline transition-colors duration-100 hover:text-senegal-yellow-300"
+            className="flex items-center gap-3 text-white no-underline transition-all duration-300 hover:text-gold group"
             onClick={closeMobileMenu}
           >
-            <span className="text-2xl" role="img" aria-label="Mangue">🥭</span>
-            <span className="text-lg font-bold">{companyInfo.name}</span>
+            <span className="text-2xl transition-transform duration-300 group-hover:scale-110" role="img" aria-label="Mangue">🥭</span>
+            <span className="text-lg font-semibold tracking-wide font-sans">{companyInfo.name}</span>
           </Link>
 
           {/* Desktop navigation links */}
@@ -76,10 +92,10 @@ export default function Navbar() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`rounded-md px-3 py-2 text-sm font-medium transition-colors duration-100 ${
+                    className={`relative px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-300 font-sans nav-link-underline ${
                       isActive
-                        ? 'bg-senegal-green-600 text-senegal-yellow-300'
-                        : 'text-white hover:bg-senegal-green-700 hover:text-senegal-yellow-200'
+                        ? 'text-gold active'
+                        : 'text-white/90 hover:text-gold'
                     }`}
                     aria-current={isActive ? 'page' : undefined}
                   >
@@ -88,12 +104,20 @@ export default function Navbar() {
                 </li>
               );
             })}
+            <li className="ml-4">
+              <Link
+                href="/contact"
+                className="inline-flex items-center rounded-full bg-gold px-6 py-2.5 text-sm font-semibold text-forest-green transition-all duration-300 hover:bg-gold-light hover:shadow-gold btn-scale font-sans"
+              >
+                Commander
+              </Link>
+            </li>
           </ul>
 
           {/* Hamburger button (mobile) */}
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-md p-2 text-white transition-colors duration-100 hover:bg-senegal-green-700 hover:text-senegal-yellow-200 md:hidden"
+            className="inline-flex items-center justify-center rounded-lg p-2 text-white transition-colors duration-300 hover:text-gold md:hidden"
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
             onClick={toggleMobileMenu}
@@ -106,34 +130,45 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu panel (slide-down) */}
+      {/* Mobile menu panel */}
       <div
         id="mobile-menu"
-        className={`overflow-hidden transition-all duration-300 ease-in-out md:hidden ${
-          mobileMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
+        className={`overflow-hidden transition-all duration-500 ease-in-out md:hidden ${
+          mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <ul className="space-y-1 px-4 pb-4 pt-2">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={`block rounded-md px-3 py-2 text-base font-medium transition-colors duration-100 ${
-                    isActive
-                      ? 'bg-senegal-green-600 text-senegal-yellow-300'
-                      : 'text-white hover:bg-senegal-green-700 hover:text-senegal-yellow-200'
-                  }`}
-                  aria-current={isActive ? 'page' : undefined}
-                  onClick={closeMobileMenu}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <div className="border-t border-white/10 px-6 pb-6 pt-4">
+          <ul className="space-y-1">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className={`block rounded-xl px-4 py-3 text-base font-medium transition-all duration-300 font-sans ${
+                      isActive
+                        ? 'bg-white/10 text-gold'
+                        : 'text-white/90 hover:bg-white/5 hover:text-gold'
+                    }`}
+                    aria-current={isActive ? 'page' : undefined}
+                    onClick={closeMobileMenu}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+          <div className="mt-4 pt-4 border-t border-white/10">
+            <Link
+              href="/contact"
+              className="block w-full rounded-full bg-gold px-6 py-3 text-center text-base font-semibold text-forest-green transition-all duration-300 hover:bg-gold-light font-sans"
+              onClick={closeMobileMenu}
+            >
+              Commander
+            </Link>
+          </div>
+        </div>
       </div>
     </nav>
   );

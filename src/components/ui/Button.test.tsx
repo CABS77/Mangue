@@ -28,14 +28,14 @@ describe('Button', () => {
   it('applies primary variant classes by default', () => {
     render(<Button>Primary</Button>);
     const btn = screen.getByRole('button', { name: 'Primary' });
-    expect(btn.className).toContain('bg-senegal-yellow-500');
-    expect(btn.className).toContain('text-senegal-green-900');
+    expect(btn.className).toContain('bg-gold');
+    expect(btn.className).toContain('text-forest-green');
   });
 
   it('applies secondary variant classes', () => {
     render(<Button variant="secondary">Secondary</Button>);
     const btn = screen.getByRole('button', { name: 'Secondary' });
-    expect(btn.className).toContain('bg-senegal-green-600');
+    expect(btn.className).toContain('bg-forest-green');
     expect(btn.className).toContain('text-white');
   });
 
@@ -43,14 +43,13 @@ describe('Button', () => {
     render(<Button variant="outline">Outline</Button>);
     const btn = screen.getByRole('button', { name: 'Outline' });
     expect(btn.className).toContain('bg-transparent');
-    expect(btn.className).toContain('border-senegal-green-600');
+    expect(btn.className).toContain('border-white');
   });
 
-  it('includes transition-colors with 100ms duration for hover feedback', () => {
+  it('includes scale animation class for hover feedback', () => {
     render(<Button>Hover me</Button>);
     const btn = screen.getByRole('button', { name: 'Hover me' });
-    expect(btn.className).toContain('transition-colors');
-    expect(btn.className).toContain('duration-100');
+    expect(btn.className).toContain('btn-scale');
   });
 
   it('calls onClick handler when clicked', async () => {
@@ -69,7 +68,7 @@ describe('Button', () => {
   it('applies variant classes to link buttons', () => {
     render(<Button href="/contact" variant="secondary">Contact</Button>);
     const link = screen.getByRole('link', { name: 'Contact' });
-    expect(link.className).toContain('bg-senegal-green-600');
+    expect(link.className).toContain('bg-forest-green');
     expect(link.className).toContain('text-white');
   });
 });

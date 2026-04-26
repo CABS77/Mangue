@@ -26,17 +26,17 @@ function StaticFallback({ latitude, longitude, address }: LocationMapProps) {
   const osmUrl = `https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}#map=15/${latitude}/${longitude}`;
 
   return (
-    <div className="flex h-80 flex-col items-center justify-center rounded-lg bg-senegal-green-50 p-8 text-center">
+    <div className="flex h-80 flex-col items-center justify-center rounded-2xl bg-cream p-8 text-center">
       <span className="mb-4 text-4xl" aria-hidden="true">📍</span>
-      <p className="mb-2 text-lg font-medium text-senegal-green-800">
+      <p className="mb-2 font-serif text-lg font-semibold text-forest-green">
         Notre adresse
       </p>
-      <p className="mb-4 leading-relaxed text-senegal-green-700">{address}</p>
+      <p className="mb-6 leading-relaxed text-charcoal-light font-sans">{address}</p>
       <a
         href={osmUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-block rounded-md bg-senegal-green-600 px-6 py-2 text-sm font-medium text-white transition-colors duration-100 hover:bg-senegal-green-500"
+        className="inline-block rounded-full bg-gold px-8 py-3 text-sm font-semibold text-forest-green transition-all duration-300 hover:bg-gold-light hover:shadow-gold btn-scale font-sans"
       >
         Voir sur OpenStreetMap
       </a>
@@ -64,7 +64,7 @@ export default function LocationMap({ latitude, longitude, address }: LocationMa
 
   return (
     <div>
-      <div className="h-80 overflow-hidden rounded-lg">
+      <div className="h-80 overflow-hidden rounded-2xl">
         <MapContainer
           center={[latitude, longitude]}
           zoom={14}
@@ -86,14 +86,14 @@ export default function LocationMap({ latitude, longitude, address }: LocationMa
         </MapContainer>
       </div>
       <noscript>
-        <div className="mt-4 rounded-lg bg-senegal-green-50 p-6 text-center">
-          <p className="mb-2 text-senegal-green-800">
-            <strong>Notre adresse :</strong> {address}
+        <div className="mt-4 rounded-2xl bg-cream p-6 text-center">
+          <p className="text-charcoal font-sans">
+            <strong className="text-forest-green">Notre adresse :</strong> {address}
           </p>
-          <p>
+          <p className="mt-2">
             <a
               href={osmUrl}
-              className="text-senegal-green-600 underline"
+              className="text-forest-green underline decoration-gold/50 underline-offset-4"
             >
               Voir notre localisation sur OpenStreetMap
             </a>

@@ -23,7 +23,7 @@ describe('Footer', () => {
 
   it('renders the SIREN number', () => {
     render(<Footer />);
-    expect(screen.getByText('SIREN : 947 529 046')).toBeInTheDocument();
+    expect(screen.getByText(/SIREN.*947 529 046/)).toBeInTheDocument();
   });
 
   it('renders a link to /mentions-legales', () => {
@@ -46,12 +46,12 @@ describe('Footer', () => {
 
   it('renders the contact email', () => {
     render(<Footer />);
-    expect(screen.getByText('contact@import-mangues-senegal.fr')).toBeInTheDocument();
+    expect(screen.getByText('cabs77.fr@gmail.com')).toBeInTheDocument();
   });
 
   it('renders the contact phone number', () => {
     render(<Footer />);
-    expect(screen.getByText('+33 1 00 00 00 00')).toBeInTheDocument();
+    expect(screen.getByText('+33 7 52 90 00 84')).toBeInTheDocument();
   });
 
   it('uses a <footer> element', () => {

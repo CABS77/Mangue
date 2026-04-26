@@ -82,7 +82,7 @@ describe('Navbar', () => {
     // Open
     fireEvent.click(button);
     expect(button).toHaveAttribute('aria-expanded', 'true');
-    expect(mobileMenu).toHaveClass('max-h-64');
+    expect(mobileMenu).toHaveClass('max-h-96');
 
     // Close
     fireEvent.click(button);

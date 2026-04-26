@@ -3,6 +3,7 @@ interface SectionHeadingProps {
   subtitle?: string;
   className?: string;
   centered?: boolean;
+  light?: boolean;
 }
 
 export default function SectionHeading({
@@ -10,14 +11,34 @@ export default function SectionHeading({
   subtitle,
   className = '',
   centered = true,
+  light = false,
 }: SectionHeadingProps) {
   return (
-    <div className={`mb-10 ${centered ? 'text-center' : ''} ${className}`.trim()}>
-      <h2 className="text-3xl font-bold text-senegal-green-800 sm:text-4xl">
+    <div className={`mb-16 ${centered ? 'text-center' : ''} ${className}`.trim()}>
+      {subtitle && (
+        <p
+          className={`mb-4 text-sm font-medium uppercase tracking-premium ${
+            light ? 'text-gold-light' : 'text-gold'
+          }`}
+        >
+          {subtitle}
+        </p>
+      )}
+      <h2
+        className={`font-serif text-3xl font-bold sm:text-4xl lg:text-5xl ${
+          light ? 'text-white' : 'text-forest-green'
+        }`}
+      >
         {children}
       </h2>
-      {subtitle && (
-        <p className="mt-3 text-lg text-senegal-green-600">{subtitle}</p>
+      {centered && (
+        <div
+          className={`mx-auto mt-6 h-[2px] w-20 rounded-full ${
+            light
+              ? 'bg-gradient-to-r from-transparent via-gold to-transparent'
+              : 'bg-gradient-to-r from-transparent via-gold to-transparent'
+          }`}
+        />
       )}
     </div>
   );

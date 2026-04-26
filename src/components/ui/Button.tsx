@@ -22,15 +22,15 @@ export type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    'bg-senegal-yellow-500 text-senegal-green-900 hover:bg-senegal-yellow-400 focus-visible:ring-senegal-yellow-500',
+    'bg-gold text-forest-green hover:bg-gold-light hover:shadow-gold focus-visible:ring-gold',
   secondary:
-    'bg-senegal-green-600 text-white hover:bg-senegal-green-500 focus-visible:ring-senegal-green-600',
+    'bg-forest-green text-white hover:bg-forest-green-light focus-visible:ring-forest-green',
   outline:
-    'bg-transparent border-2 border-senegal-green-600 text-senegal-green-700 hover:bg-senegal-green-50 focus-visible:ring-senegal-green-600',
+    'bg-transparent border-2 border-white text-white hover:bg-white/10 focus-visible:ring-white',
 };
 
 const baseClasses =
-  'inline-flex items-center justify-center rounded-lg px-6 py-3 text-base font-semibold transition-colors duration-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2';
+  'inline-flex items-center justify-center rounded-full px-8 py-3.5 text-base font-semibold btn-scale focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 tracking-wide';
 
 export default function Button({
   variant = 'primary',
