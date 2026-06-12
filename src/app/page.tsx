@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import HeroSection from '@/components/home/HeroSection';
 import SellingPoints from '@/components/home/SellingPoints';
+import PricingBanner from '@/components/home/PricingBanner';
 import ProductPreview from '@/components/home/ProductPreview';
 import Testimonials from '@/components/home/Testimonials';
 import CtaSection from '@/components/home/CtaSection';
@@ -16,6 +17,7 @@ export default function Home() {
     <>
       <HeroSection />
       <SellingPoints />
+      <PricingBanner />
       <ProductPreview />
       <Testimonials />
       <CtaSection />

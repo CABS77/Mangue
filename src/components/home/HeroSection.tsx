@@ -62,13 +62,14 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-content px-6 py-32 text-center lg:px-8">
-        <p
-          className={`mb-6 text-sm font-medium uppercase tracking-premium text-gold font-sans transition-all duration-700 ${
-            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}
-        >
-          Importation directe du Sénégal
-        </p>
+        <div className={`mb-6 flex flex-wrap items-center justify-center gap-3 transition-all duration-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <span className="rounded-full bg-gold/20 px-4 py-1.5 text-xs font-semibold uppercase tracking-premium text-gold font-sans border border-gold/30">
+            🇸🇳 Import direct Sénégal
+          </span>
+          <span className="rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold text-white/80 font-sans border border-white/20">
+            ~3,40 €/kg — 10% sous Rungis
+          </span>
+        </div>
 
         <h1
           className={`font-serif text-5xl font-bold leading-tight text-white sm:text-6xl lg:text-7xl xl:text-8xl transition-all duration-700 delay-200 ${
@@ -96,8 +97,8 @@ export default function HeroSection() {
           <Button href="/produits" variant="primary" className="text-lg px-10 py-4">
             Découvrir nos mangues
           </Button>
-          <Button href="/contact" variant="outline" className="text-lg px-10 py-4">
-            Nous contacter
+          <Button href="/commande" variant="outline" className="text-lg px-10 py-4">
+            Commander maintenant
           </Button>
         </div>
       </div>

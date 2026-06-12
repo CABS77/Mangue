@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CookieBanner from "@/components/cookies/CookieBanner";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import { companyInfo } from "@/data/company";
 
 export const metadata: Metadata = {
@@ -49,6 +50,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <CookieBanner />
+        <WhatsAppButton />
       </body>
     </html>
   );
