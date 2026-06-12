@@ -314,9 +314,12 @@ export default function OrderForm() {
         {status === 'submitting' ? 'Envoi en cours...' : 'Envoyer ma commande'}
       </Button>
 
-      <p className="text-center text-sm text-charcoal-light font-sans">
-        Paiement à la livraison · Confirmation sous 24h · <a href="tel:+33752900084" className="text-forest-green hover:underline">+33 7 52 90 00 84</a>
-      </p>
+      <div className="rounded-xl bg-gold/10 border border-gold/30 p-4 text-sm font-sans text-charcoal space-y-1">
+        <p className="font-semibold text-forest-green">💳 Conditions de paiement</p>
+        <p>• <strong>Nouveau client :</strong> 50% d&apos;acompte à la commande (virement ou PayPal), solde à la livraison</p>
+        <p>• <strong>Client régulier :</strong> paiement à la livraison ou en fin de mois</p>
+        <p className="text-charcoal-light pt-1">Questions ? <a href="tel:+33752900084" className="text-forest-green font-semibold hover:underline">+33 7 52 90 00 84</a></p>
+      </div>
     </form>
   );
 }

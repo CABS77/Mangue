@@ -10,7 +10,7 @@ const perks = [
   { icon: '✅', text: 'Importateur direct — sans intermédiaire' },
   { icon: '📦', text: 'Boîtes 4 kg et 6 kg disponibles' },
   { icon: '🚚', text: 'Livraison Île-de-France possible' },
-  { icon: '💳', text: 'Paiement à la livraison' },
+  { icon: '💳', text: 'Acompte 50% — solde à la livraison' },
 ];
 
 export default function PricingBanner() {
