@@ -107,7 +107,7 @@ export default function Navbar() {
             })}
             <li className="ml-4">
               <Link
-                href="/contact"
+                href="/commande"
                 className="inline-flex items-center rounded-full bg-gold px-6 py-2.5 text-sm font-semibold text-forest-green transition-all duration-300 hover:bg-gold-light hover:shadow-gold btn-scale font-sans"
               >
                 Commander
@@ -162,7 +162,7 @@ export default function Navbar() {
           </ul>
           <div className="mt-4 pt-4 border-t border-white/10">
             <Link
-              href="/contact"
+              href="/commande"
               className="block w-full rounded-full bg-gold px-6 py-3 text-center text-base font-semibold text-forest-green transition-all duration-300 hover:bg-gold-light font-sans"
               onClick={closeMobileMenu}
             >
