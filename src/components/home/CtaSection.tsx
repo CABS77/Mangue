@@ -25,8 +25,8 @@ export default function CtaSection() {
             découvrir nos offres et passer commande.
           </p>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <Button href="/contact" variant="primary" className="text-lg px-10 py-4">
-              Nous contacter
+            <Button href="/commande" variant="primary" className="text-lg px-10 py-4">
+              Commander maintenant
             </Button>
             <Button href="/produits" variant="outline" className="text-lg px-10 py-4">
               Voir nos produits
