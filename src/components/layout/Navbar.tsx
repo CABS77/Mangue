@@ -8,6 +8,7 @@ import { companyInfo } from '@/data/company';
 const navLinks = [
   { href: '/', label: 'Accueil' },
   { href: '/produits', label: 'Produits' },
+  { href: '/commande', label: 'Commander' },
   { href: '/a-propos', label: 'À Propos' },
   { href: '/contact', label: 'Contact' },
 ];
