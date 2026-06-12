@@ -4,11 +4,16 @@ const BOT = process.env.TELEGRAM_BOT_TOKEN!;
 const CHAT = process.env.TELEGRAM_CHAT_ID!;
 
 async function sendTelegram(text: string) {
-  await fetch(`https://api.telegram.org/bot${BOT}/sendMessage`, {
+  const res = await fetch(`https://api.telegram.org/bot${BOT}/sendMessage`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ chat_id: CHAT, text, parse_mode: 'HTML' }),
   });
+  if (!res.ok) {
+    const body = await res.text();
+    console.error('Telegram error:', res.status, body);
+    throw new Error(`Telegram ${res.status}: ${body}`);
+  }
 }
 
 export async function POST(req: NextRequest) {
@@ -53,7 +58,8 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error('Commande API error:', err);
-    return NextResponse.json({ ok: false }, { status: 500 });
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error('Commande API error:', msg);
+    return NextResponse.json({ ok: false, error: msg }, { status: 500 });
   }
 }
