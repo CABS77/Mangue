@@ -50,7 +50,7 @@ export default function CommandePage() {
                       <span className="font-semibold text-mango-orange">~4–4,50 €/kg</span>
                     </div>
                     <div className="border-t border-cream-dark pt-3 text-charcoal-light text-xs">
-                      Prix HT · 10% sous le cours Rungis · Paiement à la livraison
+                      Prix HT · 10% sous le cours Rungis · Acompte 50% à la commande
                     </div>
                   </div>
                 </div>
