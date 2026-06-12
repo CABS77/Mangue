@@ -100,13 +100,14 @@ export default function OrderForm() {
       .join('\n');
 
     const payload = {
-      type: 'COMMANDE',
       fullName: formData.fullName,
       email: formData.email,
       phone: formData.phone,
       customerType: formData.customerType,
       company: formData.company || '—',
-      address: `${formData.address}, ${formData.postalCode} ${formData.city}`,
+      address: formData.address,
+      postalCode: formData.postalCode,
+      city: formData.city,
       orders: orderLines,
       totalBoxes: totalBoxes(),
       totalWeight: `${totalWeight()} kg`,
@@ -115,7 +116,7 @@ export default function OrderForm() {
     };
 
     try {
-      const res = await fetch('https://formspree.io/f/mdayvnro', {
+      const res = await fetch('/api/commande', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
