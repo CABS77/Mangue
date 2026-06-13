@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Product } from '@/types';
 
 interface ProductCardProps {
@@ -48,6 +49,12 @@ export default function ProductCard({ product }: ProductCardProps) {
             </div>
           </div>
         </div>
+        <Link
+          href={`/commande?produit=${encodeURIComponent(product.name)}`}
+          className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-semibold text-forest-green transition-all duration-300 hover:bg-gold-light hover:shadow-gold font-sans"
+        >
+          Commander
+        </Link>
       </div>
     </article>
   );
