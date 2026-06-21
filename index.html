@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAP-APR : Note d'analyse stratégique sur la cohabitation Diomaye-Sonko</title>
+<style>
+  :root{
+    --navy:#0d2438;
+    --navy-light:#1a3a5c;
+    --accent:#c9a227;
+    --gold:#b8860b;
+    --red:#a8332a;
+    --red-light:#fbeae8;
+    --green:#1e7a45;
+    --green-light:#e6f6ec;
+    --grey:#6b7280;
+    --bg:#f7f8fa;
+    --card:#ffffff;
+    --border:#e3e6ea;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Georgia','Times New Roman',serif;
+    background:var(--bg);
+    color:#1c1c1c;
+    line-height:1.65;
+  }
+  .topbar{
+    background:var(--navy);
+    color:#fff;
+    padding:14px 24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family:Arial,sans-serif;
+    font-size:13px;
+    letter-spacing:0.5px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 2px 8px rgba(0,0,0,0.15);
+  }
+  .topbar .tag{
+    background:var(--red);
+    padding:3px 10px;
+    border-radius:3px;
+    font-weight:bold;
+    font-size:11px;
+  }
+  .hero{
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color:#fff;
+    padding:60px 24px 50px;
+    text-align:center;
+  }
+  .hero .kicker{
+    font-family:Arial,sans-serif;
+    font-size:13px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:14px;
+  }
+  .hero h1{
+    font-size:2.1em;
+    margin:0 0 14px;
+    font-weight:700;
+    max-width:800px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .hero h2{
+    font-size:1.15em;
+    color:#cdd9e5;
+    font-weight:400;
+    font-style:italic;
+    max-width:700px;
+    margin:0 auto;
+  }
+  .meta-bar{
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    padding:16px 24px;
+    font-family:Arial,sans-serif;
+    font-size:13px;
+    color:var(--grey);
+    display:flex;
+    flex-wrap:wrap;
+    gap:24px;
+    justify-content:center;
+  }
+  .meta-bar strong{color:#1c1c1c;}
+  .container{
+    max-width:880px;
+    margin:0 auto;
+    padding:40px 24px 80px;
+  }
+  .toc{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:24px 28px;
+    margin-bottom:40px;
+    font-family:Arial,sans-serif;
+  }
+  .toc h3{
+    margin-top:0;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:var(--navy);
+    border-bottom:2px solid var(--accent);
+    padding-bottom:10px;
+  }
+  .toc ol{margin:0;padding-left:20px;}
+  .toc li{margin-bottom:6px;font-size:14.5px;}
+  .toc a{color:var(--navy-light);text-decoration:none;}
+  .toc a:hover{text-decoration:underline;}
+  section{margin-bottom:48px;}
+  h1.sec{
+    font-family:Arial,sans-serif;
+    color:var(--navy);
+    font-size:1.5em;
+    border-bottom:3px solid var(--navy);
+    padding-bottom:10px;
+    margin-bottom:20px;
+    scroll-margin-top:70px;
+  }
+  h2.sub{
+    font-family:Arial,sans-serif;
+    color:var(--navy-light);
+    font-size:1.15em;
+    margin-top:28px;
+    margin-bottom:12px;
+  }
+  p{font-size:16px;text-align:justify;margin:0 0 14px;}
+  .lead{
+    font-size:18px;
+    color:var(--navy);
+    font-weight:600;
+    font-family:Arial,sans-serif;
+    border-left:4px solid var(--accent);
+    padding-left:18px;
+    margin-bottom:24px;
+  }
+  ul.bullets{padding-left:22px;margin-bottom:16px;}
+  ul.bullets li{margin-bottom:8px;font-size:15.5px;}
+  .alert{
+    border-radius:8px;
+    padding:18px 22px;
+    margin:24px 0;
+    font-family:Arial,sans-serif;
+  }
+  .alert .alert-title{
+    font-weight:bold;
+    font-size:14.5px;
+    margin-bottom:8px;
+    display:block;
+  }
+  .alert p{font-size:14.5px;margin:0;text-align:left;}
+  .alert-red{background:var(--red-light);border-left:4px solid var(--red);}
+  .alert-red .alert-title{color:var(--red);}
+  .alert-green{background:var(--green-light);border-left:4px solid var(--green);}
+  .alert-green .alert-title{color:var(--green);}
+  .alert-gold{background:#fff9e6;border-left:4px solid var(--gold);}
+  .alert-gold .alert-title{color:var(--gold);}
+  .alert-navy{background:#eaf0f7;border-left:4px solid var(--navy-light);}
+  .alert-navy .alert-title{color:var(--navy-light);}
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:20px 0;
+    font-family:Arial,sans-serif;
+    font-size:14px;
+  }
+  th{
+    background:var(--navy);
+    color:#fff;
+    text-align:left;
+    padding:10px 14px;
+    font-weight:600;
+  }
+  td{
+    padding:10px 14px;
+    border-bottom:1px solid var(--border);
+    vertical-align:top;
+  }
+  tr.row-green td{background:var(--green-light);}
+  tr.row-red td{background:var(--red-light);}
+  tr.row-neutral td{background:#fafafa;}
+  .quote-table td:first-child{font-style:italic;color:#333;width:38%;}
+
+  .timeline{
+    position:relative;
+    margin:24px 0;
+    padding-left:28px;
+    border-left:3px solid var(--accent);
+  }
+  .timeline-item{
+    margin-bottom:24px;
+    position:relative;
+  }
+  .timeline-item::before{
+    content:'';
+    position:absolute;
+    left:-37px;
+    top:4px;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:var(--navy);
+    border:2px solid var(--accent);
+  }
+  .timeline-date{
+    font-family:Arial,sans-serif;
+    font-weight:bold;
+    color:var(--navy);
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    margin-bottom:4px;
+  }
+  .timeline-item.new .timeline-date{color:var(--red);}
+  .badge-new{
+    background:var(--red);
+    color:#fff;
+    font-size:10px;
+    padding:2px 7px;
+    border-radius:3px;
+    font-family:Arial,sans-serif;
+    margin-left:8px;
+    vertical-align:middle;
+  }
+  .timeline-item h4{
+    font-family:Arial,sans-serif;
+    margin:4px 0 8px;
+    font-size:16px;
+    color:#1c1c1c;
+  }
+  .timeline-item p{font-size:14.5px;margin-bottom:0;}
+
+  .pull-quote{
+    font-family:Georgia, serif;
+    font-style:italic;
+    font-size:1.3em;
+    color:var(--navy);
+    text-align:center;
+    padding:24px;
+    margin:28px 0;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+  }
+  .pull-quote cite{
+    display:block;
+    font-family:Arial,sans-serif;
+    font-style:normal;
+    font-size:0.6em;
+    color:var(--grey);
+    margin-top:10px;
+  }
+
+  .conclusion-box{
+    background:var(--navy);
+    color:#fff;
+    border-radius:10px;
+    padding:32px;
+    margin-top:32px;
+    font-family:Arial,sans-serif;
+  }
+  .conclusion-box h3{margin-top:0;color:var(--accent);font-size:14px;text-transform:uppercase;letter-spacing:1px;}
+  .conclusion-box p{color:#e8ecf1;text-align:left;font-size:15px;}
+
+  footer{
+    text-align:center;
+    padding:30px 24px 50px;
+    font-family:Arial,sans-serif;
+    font-size:12.5px;
+    color:var(--grey);
+    border-top:1px solid var(--border);
+  }
+  .back-to-top{
+    display:inline-block;
+    margin-top:10px;
+    font-size:12px;
+    color:var(--navy-light);
+    text-decoration:none;
+  }
+  @media print{
+    .topbar,.toc{display:none;}
+  }
+  @media (max-width:600px){
+    .hero h1{font-size:1.5em;}
+    .meta-bar{flex-direction:column;gap:8px;align-items:center;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>Cellule Analyses et Prospective, APR-Yaakaar</span>
+  <span class="tag">Usage interne</span>
+</div>
+
+<div class="hero">
+  <div class="kicker">Note d'analyse stratégique, Version 3</div>
+  <h1>Cohabitation Diomaye-Sonko : la bascule de l'opinion non-partisane</h1>
+  <h2>De la rupture du 22 mai à l'investiture de Sonko pour 2029 : ce que cela signifie pour l'APR</h2>
+</div>
+
+<div class="meta-bar">
+  <span><strong>Auteur :</strong> Cellule Analyses et Prospective</span>
+  <span><strong>Destinataire initial :</strong> Hamidou Anne</span>
+  <span><strong>Mise à jour :</strong> 21 juin 2026</span>
+  <span><strong>Classification :</strong> Confidentiel, diffusion CAP</span>
+</div>
+
+<div class="container">
+
+  <div class="toc">
+    <h3>Sommaire</h3>
+    <ol>
+      <li><a href="#resume">Résumé exécutif</a></li>
+      <li><a href="#chrono">Chronologie (22 mai au 21 juin)</a></li>
+      <li><a href="#discours">Le discours du 4 juin</a></li>
+      <li><a href="#cohabitation">La cohabitation, et ce qu'elle change</a></li>
+      <li><a href="#tendances">Où en est l'opinion</a></li>
+      <li><a href="#risques">Les risques pour nous</a></li>
+      <li><a href="#recommandations">Ce qu'on propose</a></li>
+      <li><a href="#conclusion">Pour conclure</a></li>
+    </ol>
+  </div>
+
+  <section id="resume">
+    <h1 class="sec">1. Résumé exécutif</h1>
+    <p class="lead">Un mois après le limogeage de Sonko, la tendance qu'on observait début juin s'est confirmée, et même accélérée. Diomaye gagne du terrain dans l'opinion non-partisane. Sonko consolide son pouvoir au Pastef mais s'enferme dans une posture de chef d'opposition qui ne convainc pas au-delà de sa base.</p>
+    <p>Trois choses ont changé depuis notre dernière note. Le 1er juin, Diomaye a formé un gouvernement technocratique sans le Pastef. Le 6 et 7 juin, Sonko a été réélu à la tête du parti puis investi candidat pour 2029, dès maintenant. Et la situation est désormais qualifiée ouvertement de cohabitation par la presse et les chercheurs, ce qui n'était pas encore le cas il y a quinze jours.</p>
+    <div class="alert alert-red">
+      <span class="alert-title">Ce qu'il faut retenir</span>
+      <p>On est dans une cohabitation institutionnelle sans précédent depuis l'indépendance. Le débat public se referme autour de deux figures, Diomaye et Sonko, et tout le reste de l'échiquier politique, l'APR comprise, perd de la place. C'est allé plus vite que ce qu'on anticipait.</p>
+    </div>
+  </section>
+
+  <section id="chrono">
+    <h1 class="sec">2. Chronologie</h1>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-date">22 mai 2026</div>
+        <h4>Limogeage de Sonko</h4>
+        <p>Diomaye met fin aux fonctions de Sonko et de tout le gouvernement, par décret lu à la télévision. La presse parle de fracture, certains titres vont jusqu'à dire « gueguerre ».</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">25 mai 2026</div>
+        <h4>Ahmadou Al Aminou Lô, Premier ministre</h4>
+        <p>Ancien cadre de la BCEAO. Il dit vouloir se distinguer de Sonko par la méthode, pas par les idées, et se déclare fidèle au projet Pastef. À voir si ça tient.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">26 mai 2026</div>
+        <h4>Sonko à la tête de l'Assemblée nationale</h4>
+        <p>132 voix sur 133, quatre jours après son limogeage. L'opposition boycotte et parle de coup d'État constitutionnel.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">1er juin 2026</div>
+        <h4>Un gouvernement de 30 membres, sans le Pastef</h4>
+        <p>Gouvernement majoritairement technocratique. L'Intérieur, la Justice et le Pétrole échappent au Pastef. Quelques dissidents du parti restent quand même au gouvernement, dont Yankhoba Diémé, contre la ligne officielle.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2 juin 2026</div>
+        <h4>Sonko sort du silence</h4>
+        <p>Première sortie publique depuis son limogeage. Il accuse Diomaye de gérer le pays « à la légère », dénonce un gouvernement sans assise politique, et rappelle qu'il peut faire tomber ce gouvernement en 72 heures s'il le veut. Tout en appelant au dialogue. Le message est confus, et c'est peut-être volontaire.</p>
+      </div>
+
+      <div class="timeline-item new">
+        <div class="timeline-date">4 juin 2026 <span class="badge-new">Tournant</span></div>
+        <h4>Diomaye au centenaire d'Abdoulaye Wade</h4>
+        <p>Discours d'unité nationale qui a fait mouche, jusque dans nos propres rangs. On y revient en détail plus bas.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">5-6 juin 2026</div>
+        <h4>Fusions et premier congrès du Pastef</h4>
+        <p>La veille du congrès, fusion de plusieurs petites formations avec le Pastef (Habib Sy, Malick Gakou, Dame Mbodj). Le 6, premier congrès ordinaire du parti, douze ans après sa création. Sonko réélu président à l'unanimité, 583 voix sur 583.</p>
+      </div>
+
+      <div class="timeline-item new">
+        <div class="timeline-date">7 juin 2026 <span class="badge-new">À noter</span></div>
+        <h4>Sonko investi candidat pour 2029</h4>
+        <p>Le lendemain du congrès, meeting à Dakar Arena : Sonko est investi candidat du Pastef pour 2029. Trois ans avant l'échéance. On n'a jamais vu ça au Sénégal, un président de l'Assemblée, chef du parti majoritaire, déjà candidat officiel pour la suite, face à un président encore en exercice.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">Semaine du 8 juin</div>
+        <h4>Le Pastef fait le ménage</h4>
+        <p>Les militants entrés au gouvernement Lô contre la ligne du parti sont sortis des groupes WhatsApp de coordination, et risquent la radiation. Plusieurs départs dans la foulée : Moussa Bala Fofana quitte le Pastef, Sidy Alpha Ndiaye quitte la présidence, un directeur d'hôpital régional démissionne aussi.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">Mi-juin</div>
+        <h4>Le mot cohabitation s'installe</h4>
+        <p>Chercheurs et presse parlent maintenant ouvertement de cohabitation : un président sans député à lui à l'Assemblée, face à un parti adverse qui en contrôle plus des trois quarts. Personne ne se souvient d'une configuration pareille depuis l'indépendance.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="discours">
+    <h1 class="sec">3. Le discours du 4 juin</h1>
+    <p>Pour le centenaire d'Abdoulaye Wade, Diomaye n'a pas fait un simple hommage de politesse. C'est un texte calculé, et il fonctionne sur plusieurs publics à la fois.</p>
+
+    <div class="alert alert-gold">
+      <span class="alert-title">Trois publics, un seul discours</span>
+      <p>
+      À l'opposition, dont nous : il se présente en président de tous les Sénégalais, au-dessus des partis.<br>
+      À Sonko : un désaveu poli mais clair des turbulences récentes.<br>
+      Aux jeunes et aux non-partisans : un éloge de la patience, contre la culture du tout-tout-de-suite qu'incarne souvent le discours pastéfien.
+      </p>
+    </div>
+
+    <h2 class="sub">Ce qu'il a dit, et ce que ça veut dire</h2>
+    <table class="quote-table">
+      <tr><th>Citation</th><th>Pourquoi ça compte</th></tr>
+      <tr class="row-red"><td>« L'adversaire d'aujourd'hui n'est pas un ennemi. »</td><td>Impossible à attaquer sans passer pour belliqueux. C'est fait pour ça.</td></tr>
+      <tr class="row-red"><td>« Aucune querelle, si vive soit-elle, ne mérite que l'on déchire le pays qui nous est commun. »</td><td>Vise directement la sortie de Sonko du 2 juin. Le contraste de ton est frappant.</td></tr>
+      <tr class="row-green"><td>« On peut tenir bon sans se durcir et continuer d'aimer profondément un pays qui vous éprouve. »</td><td>Posture présidentielle qui parle directement aux déçus des deux camps.</td></tr>
+      <tr class="row-red"><td>Hommage à la transition Diouf-Wade de 2000, « la plus belle page de notre histoire »</td><td>Rappel à peine voilé que le pouvoir se gagne dans les urnes, pas dans le rapport de force permanent.</td></tr>
+    </table>
+
+    <div class="alert alert-red">
+      <span class="alert-title">Le vrai problème pour nous</span>
+      <p>Plusieurs cadres et militants APR ont salué ce discours sans réserve. Ça en dit plus sur nous que sur Diomaye. Si on est séduits par le discours d'en face, c'est qu'on n'a pas occupé ce terrain nous-mêmes.</p>
+    </div>
+  </section>
+
+  <section id="cohabitation">
+    <h1 class="sec">4. La cohabitation, et ce qu'elle change</h1>
+    <p>Avec le gouvernement technocratique du 1er juin et l'investiture de Sonko pour 2029 dès le 7, on n'est plus dans une brouille entre deux anciens amis. C'est devenu une configuration institutionnelle qui va durer.</p>
+
+    <div class="pull-quote">
+      « Si je le voulais et si Pastef le veut, dans 72 heures ce gouvernement peut tomber parce qu'on a la possibilité de censurer. »
+      <cite>Ousmane Sonko, conférence de presse, 2 juin 2026</cite>
+    </div>
+
+    <h2 class="sub">Le rapport de force</h2>
+    <table>
+      <tr><th>Acteur</th><th>Atout</th><th>Limite</th></tr>
+      <tr class="row-neutral"><td>Diomaye Faye</td><td>Pouvoirs constitutionnels du chef de l'État, nomination du gouvernement</td><td>Aucun député à lui à l'Assemblée nationale</td></tr>
+      <tr class="row-neutral"><td>Ousmane Sonko</td><td>130 députés sur 165, présidence de l'Assemblée, pouvoir de censure</td><td>Pas de dissolution possible avant novembre 2026, ne contrôle pas le gouvernement</td></tr>
+    </table>
+    <p>Pour l'instant Sonko ne censure pas. Il préfère « accompagner » en critiquant fort. Ça lui permet de garder l'image du responsable tout en laissant planer la menace. Calcul classique, mais efficace.</p>
+
+    <div class="alert alert-navy">
+      <span class="alert-title">Pour nous</span>
+      <p>Ce n'est plus juste une question d'image entre deux hommes. C'est une course à 2029 qui a déjà ses deux candidats, et qui s'annonce longue. La place pour un troisième acteur, nous, se réduit un peu chaque semaine.</p>
+    </div>
+  </section>
+
+  <section id="tendances">
+    <h1 class="sec">5. Où en est l'opinion</h1>
+    <table>
+      <tr><th>Événement</th><th>Ce qu'en pensent les non-partisans</th></tr>
+      <tr class="row-green"><td>Limogeage de Sonko (22 mai)</td><td>Diomaye prend ses responsabilités, plutôt bien perçu</td></tr>
+      <tr class="row-red"><td>Sortie de Sonko du 2 juin</td><td>Trop centré sur lui-même, pas assez sur le pays</td></tr>
+      <tr class="row-green"><td>Discours du 4 juin</td><td>Très bien reçu, y compris chez nos militants</td></tr>
+      <tr class="row-green"><td>Gouvernement technocratique (1er juin)</td><td>Lu comme un signe de pragmatisme plutôt que d'allégeance partisane</td></tr>
+      <tr class="row-red"><td>Congrès et investiture 2029 (6-7 juin)</td><td>Beaucoup y voient une fuite en avant, « ils ne gouvernent même plus et pensent déjà à l'élection suivante »</td></tr>
+      <tr class="row-red"><td>Sanctions internes au Pastef</td><td>Image d'un parti qui se referme, à l'opposé de la posture rassembleuse de Diomaye</td></tr>
+      <tr class="row-red"><td>L'opposition, nous compris</td><td>Attentiste, sans réponse claire au moment où Diomaye occupe le centre</td></tr>
+    </table>
+    <p>La fenêtre qu'on décrivait il y a quelques semaines se referme plus vite que prévu. Diomaye ne se contente pas de réagir aux coups de Sonko : il construit sa propre base, avec des gestes symboliques comme le discours du 4 juin et une gestion qui se présente comme technique plutôt que partisane.</p>
+  </section>
+
+  <section id="risques">
+    <h1 class="sec">6. Les risques pour nous</h1>
+
+    <h2 class="sub">6.1 On admire l'adversaire</h2>
+    <p>Quand des cadres APR saluent sans réserve le discours de Diomaye, ça révèle un trou dans notre propre discours. On n'a pas encore construit un récit qui tienne face à ça.</p>
+
+    <h2 class="sub">6.2 Deux camps, et nous au milieu</h2>
+    <p>Avec Sonko investi pour 2029 dès maintenant, la course suivante a déjà ses deux pôles. On risque d'être absorbés par l'un des deux camps faute d'offre propre, ou de disparaître du débat tout simplement.</p>
+
+    <h2 class="sub">6.3 Le silence coûte cher</h2>
+    <p>Diomaye et Sonko occupent tout l'espace médiatique avec leur affrontement. Pendant ce temps, on n'existe pas dans le débat. Et dans une compétition pour l'attention, ne pas exister équivaut à perdre.</p>
+
+    <div class="alert alert-red">
+      <span class="alert-title">Le constat brut</span>
+      <p>Cette cohabitation va durer jusqu'en 2029 et elle structure déjà tout le débat. Aujourd'hui, un électeur non-partisan n'a aucune raison particulière de se tourner vers nous si on ne propose rien de distinct des deux offres déjà sur la table.</p>
+    </div>
+  </section>
+
+  <section id="recommandations">
+    <h1 class="sec">7. Ce qu'on propose</h1>
+
+    <h2 class="sub">7.1 Tout de suite</h2>
+    <ul class="bullets">
+      <li>Une déclaration de la CAP qui salue le ton du discours du 4 juin sans valider le fond, en séparant la posture des actes réels</li>
+      <li>Pointer ce qui manque concrètement au gouvernement Lô, sur l'emploi, la justice, les libertés, la dette, pour rappeler que les beaux mots doivent se traduire en résultats</li>
+      <li>Ne pas attaquer le discours de Diomaye lui-même, ce serait lui faire un cadeau</li>
+      <li>Trouver des porte-voix crédibles auprès des non-partisans, des experts, des techniciens, des gens qui ne viennent pas du sérail partisan</li>
+    </ul>
+
+    <h2 class="sub">7.2 Dans les mois qui viennent</h2>
+    <ul class="bullets">
+      <li>Un vrai contre-projet sur ce que Diomaye et Sonko n'arrivent pas à trancher entre eux, la dette, la politique monétaire, l'emploi des jeunes, le foncier</li>
+      <li>Profiter du repli du Pastef sur lui-même, ses sanctions internes, ses départs, pour récupérer les déçus qui en valent la peine</li>
+      <li>Reparler aux femmes et à la diaspora, deux bases historiques de l'APR qui ont voté Diomaye en 2024</li>
+      <li>Préparer les locales de janvier 2027 comme premier vrai test</li>
+    </ul>
+
+    <h2 class="sub">7.3 Pour 2029</h2>
+    <ul class="bullets">
+      <li>Un document de positionnement clair d'ici fin d'année, qui dise ce qu'on est, distinct des deux pôles</li>
+      <li>Trancher la question du leadership maintenant, pas en 2028</li>
+      <li>Aller parler aux leaders d'opinion non-partisans, et revenir dans le débat par les idées, pas par la posture</li>
+    </ul>
+  </section>
+
+  <section id="conclusion">
+    <h1 class="sec">8. Pour conclure</h1>
+    <p>En un mois, une dispute personnelle est devenue une cohabitation institutionnelle qui durera jusqu'en 2029, avec deux candidats déjà sur la ligne de départ. Le discours du 4 juin a marqué un point pour Diomaye auprès des non-partisans, pendant que le Pastef se referme sur sa base.</p>
+
+    <div class="conclusion-box">
+      <h3>L'essentiel</h3>
+      <p>On ne gagnera pas 2029 en regardant Diomaye et Sonko se battre. On le gagnera en construisant, dès maintenant, ce qu'aucun des deux ne propose. La fenêtre se referme vite. C'est une affaire de semaines, pas de mois.</p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  Note de la Cellule Analyses et Prospective, APR-Yaakaar. Veille continue des réseaux sociaux et de la presse sénégalaise.<br>
+  Document confidentiel, usage interne, diffusion CAP. Mise à jour du 21 juin 2026<br>
+  <a class="back-to-top" href="#resume">Retour au résumé</a>
+</footer>
+
+</body>
+</html>
